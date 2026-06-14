@@ -15,10 +15,15 @@ class CommandResult:
 
 
 class ReadOnlyCommandRunner:
-    """Small subprocess wrapper with Homebrew auto-update disabled.
+    """Subprocess wrapper for metadata-only commands.
 
-    The runner is intentionally generic, but the project only uses it for read-only
-    commands such as `which`, `mdls`, `brew list`, `brew search`, and `brew info`.
+    Homebrew auto-update is disabled for every command.
+
+    IMPORTANT: HOMEBREW_NO_INSTALL_FROM_API MUST NOT be set.
+    Homebrew treats the presence of this environment variable as boolean true,
+    regardless of its value (even "0" or "false"). Setting it disables the JSON API,
+    causing brew info to fail for non-installed casks. We intentionally omit this
+    variable to enable API lookups for artifact verification.
     """
 
     def __init__(self, *, verbose: bool = False) -> None:
@@ -27,7 +32,7 @@ class ReadOnlyCommandRunner:
     def run(self, argv: list[str]) -> CommandResult:
         env = os.environ.copy()
         env["HOMEBREW_NO_AUTO_UPDATE"] = "1"
-        env["HOMEBREW_NO_INSTALL_FROM_API"] = "0"
+        # Do NOT set HOMEBREW_NO_INSTALL_FROM_API — see class docstring
 
         if self.verbose:
             print("[read-only] " + " ".join(argv), file=sys.stderr)

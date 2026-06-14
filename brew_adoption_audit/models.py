@@ -15,7 +15,7 @@ class Recommendation(StrEnum):
 @dataclass(frozen=True)
 class AppBundle:
     name: str
-    bundle_name: str
+    app_bundle: str
     path: str
     bundle_id: str
     version: str

@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-# Conservative bundle-id mappings. A mapping is never enough on its own: the audit
-# engine still verifies that the Homebrew cask artifact matches the installed .app.
 BUNDLE_ID_TO_CASK: dict[str, str] = {
     "com.microsoft.VSCode": "visual-studio-code",
     "com.docker.docker": "docker-desktop",

@@ -7,11 +7,9 @@ name = "brew-adoption-audit"
 version = "0.2.0"
 description = "Read-only audit of macOS applications against Homebrew casks."
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = ">=3.14"
 license = { text = "MIT" }
-authors = [
-  { name = "Jan Pospisil" }
-]
+authors = [{ name = "Jan Pospisil" }]
 keywords = ["macos", "homebrew", "cask", "audit", "applications"]
 classifiers = [
   "Development Status :: 3 - Alpha",
@@ -19,12 +17,10 @@ classifiers = [
   "Intended Audience :: Developers",
   "License :: OSI Approved :: MIT License",
   "Programming Language :: Python :: 3",
-  "Programming Language :: Python :: 3.11",
-  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.14",
   "Topic :: System :: Systems Administration",
   "Topic :: Utilities"
 ]
-
 dependencies = []
 
 [project.scripts]
